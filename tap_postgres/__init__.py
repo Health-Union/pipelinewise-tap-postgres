@@ -391,6 +391,8 @@ def main_impl():
     Main method
     """
     args = parse_args(REQUIRED_CONFIG_KEYS)
+
+    limit = args.config.get('limit')
     conn_config = {
         # Required config keys
         'host': args.config['host'],
@@ -408,6 +410,7 @@ def main_impl():
         'logical_poll_total_seconds': float(args.config.get('logical_poll_total_seconds', 0)),
         'use_secondary': args.config.get('use_secondary', False),
         'conn_timeout': args.config.get('conn_timeout', 30),
+        'limit': int(limit) if limit else None
     }
 
     if conn_config['use_secondary']:
