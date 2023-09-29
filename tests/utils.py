@@ -63,7 +63,8 @@ def get_test_connection_config(target_db='postgres', use_secondary=False):
                        'tap_id': 'tap_test',
                        'max_run_seconds': 43200,
                        'break_at_end_lsn': True,
-                       'logical_poll_total_seconds': 2
+                       'logical_poll_total_seconds': 2,
+                       'conn_timeout': 120
                        }
     except KeyError as exc:
         raise Exception(

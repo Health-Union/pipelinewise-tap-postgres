@@ -52,7 +52,8 @@ class TestLogicalReplication(unittest.TestCase):
                           'tap_id': 'tap_id_value',
                           'max_run_seconds': 10,
                           'break_at_end_lsn': False,
-                          'logical_poll_total_seconds': 1}
+                          'logical_poll_total_seconds': 1,
+                          'conn_timeout': 120}
 
         self.logical_streams = [{
             'tap_stream_id': 'foo-bar',
