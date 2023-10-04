@@ -27,7 +27,8 @@ class TestFullTable(TestCase):
             'user': 'foo_user',
             'password': 'foo_pass',
             'port': 12345,
-            'use_secondary': False
+            'use_secondary': False,
+            'conn_timeout': 120
         }
 
     def test_sync_view(self):
