@@ -535,6 +535,9 @@ def locate_replication_slot_by_cur(cursor, dbname, tap_id=None):
 
 
 def locate_replication_slot(conn_info):
+    LOGGER.info('!!!!!!!!!!')
+    LOGGER.info(conn_info)
+    LOGGER.info('!!!!!!!!!!')
     with post_db.open_connection(conn_info, False, True) as conn:
         with conn.cursor() as cur:
             return locate_replication_slot_by_cur(cur, conn_info['dbname'], conn_info['tap_id'])
@@ -600,6 +603,7 @@ def sync_tables(conn_info, logical_streams, state, end_lsn, state_file):
         wal_sender_timeout = 10800000  # 10800000ms = 3 hours
         LOGGER.info('Set session wal_sender_timeout = %i milliseconds', wal_sender_timeout)
         cur.execute(f"SET SESSION wal_sender_timeout = {wal_sender_timeout}")
+
 
     try:
         LOGGER.info('Request wal streaming from %s to %s (slot %s)',
